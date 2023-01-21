@@ -8,5 +8,5 @@ Sovelluksen ominaisuuksia:
 * Arvostelusivulla näytetään kaikkien arvostelujen keskiarvo, yksittäiset arvostelut sekä tietoja teoksesta(nimi,genre,julkaisuvuosi).
 * Käyttäjä voi etsiä teosta hakusanalla.
 * Käyttäjä voi suodattaa teoksia genrejen mukaan.
-* Käyttäjä voi luoda uuden arvioitavan teoksen ja antaa sille arvostelun(tähdet ja kommentti), jos sille ei ole vielä luotu yhtäkään arvostelua. Vaihtoehtoisesti käyttäjä voi myösantaa olemassaolevalle teokselle uuden arvostelun.
+* Käyttäjä voi luoda uuden arvioitavan teoksen ja antaa sille arvostelun(tähdet ja kommentti), jos sille ei ole vielä luotu yhtäkään arvostelua. Vaihtoehtoisesti käyttäjä voi myös antaa olemassaolevalle teokselle uuden arvostelun.
 * Ylläpitäjä voi tarvittaessa lisätä ja poistaa teoksia tai yksittäisiä arvosteluita.
