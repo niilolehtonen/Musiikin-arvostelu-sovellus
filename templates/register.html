@@ -27,23 +27,16 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(
             <br>
             <h1 class="text-center">Register</h1>
             <br>
-            <form method="post">
-                <div class="mb-3">
-                    <label for="inputUsername">Username</label>
-                    <input type="text" class="form-control" id="inputUsername">
-                </div>
-                <div class="mb-3">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="Password1">
-                </div>
-                <div class="mb-3">
-                    <label for="inputPassword">Repeat password</label>
-                    <input type="password" class="form-control" id="Password2">
-                </div>
-                <div class="mb-1">
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </div>
-            </form>
+            <form action="/register" method="post">
+                <p>
+                Username: <br><input type="text" name="username">
+                <p>
+                Password: <br><input type="password" name="password1"> 
+                <p>
+                Password again: <br><input type="password" name="password2"> 
+                <p>
+                <input type="submit" value="Register"> 
+                </form>
         </div>
         </div>
     </div>
