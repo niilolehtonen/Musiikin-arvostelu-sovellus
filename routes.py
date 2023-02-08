@@ -7,9 +7,9 @@ import users
 def index():
     return render_template("frontpage.html")
 
-@app.route("/login")
+@app.route("/login", methods = ["post"])
 def login():
-
+    
     username = request.form["username"]
     password = request.form["password"]
 
@@ -37,9 +37,8 @@ def register():
             return render_template("error.html", message="Passwords do not match")
         if password1 == "":
             return render_template("error.html", message="Empty password")
-        users.register(username,password1)
-        #if not users.register(username, password1):
-        #    return render_template("error.html", message="Registration unsuccesful")
+        if not users.register(username, password1):
+            return render_template("error.html", message="Registration unsuccesful")
         return redirect("/")
 
         
