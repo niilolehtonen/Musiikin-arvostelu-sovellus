@@ -27,6 +27,7 @@ def register(name, password):
                  VALUES (:name, :password)"""
         db.session.execute(text(sql), {"name":name, "password":hash_value})
         db.session.commit()
+        return True
     except:
         return False
 

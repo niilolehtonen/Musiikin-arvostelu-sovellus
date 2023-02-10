@@ -1,84 +1,54 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block content %}
 
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-
-
-<?xml version="1.0" standalone="no"?>
-
-
-<title>ReviewMusic</title>
-
-
-
-
-
-<body style="background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);">
-    <nav class="navbar navbar-expand-sm navbar-dark">
-        <a class="navbar-brand" href="/">ReviewMusic</a>
-        <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="/artists">Artists</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Albums</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Songs</a>
-        </li>
-        </ul>
-    </nav>
-    {% if not session.user_id %}
-    <div class="container" style="color: white;">
-        <div class="row">
-        <div class="col">
-            <br>
-            <h1 class="text-center">ReviewMusic</h1>
-            <p>
-            <br>
-            <div class ="text-center">Welcome to ReviewMusic, a place where you can give star-based ratings and comment on your favourite music!</div>
-            <p>
-            <div class ="text-center">Log in to start discovering new tunes and reviewing your favourites.</div>
-            <br>
-        </div>
-        </div>
-    <div class="container d-flex justify-content-center" style="color:white;">
-        <p>Sign in: <a href="/login">Login</a></p>
+{% if not session.user_id %}
+<div class="container" style="color: white;">
+    <div class="row">
+    <div class="col">
+        <br>
+        <h1 class="text-center">ReviewMusic</h1>
+        <p>
+        <br>
+        <div class ="text-center">Welcome to ReviewMusic, a place where you can give star-based ratings and comment on your favourite music!</div>
+        <p>
+        <div class ="text-center">Log in to start discovering new tunes and reviewing your favourites.</div>
+        <br>
     </div>
-    <br>
-    <div class="container d-flex justify-content-center" style="color:white;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-            <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-            <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-            <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-            <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-        </svg>
     </div>
-    {% else %}
-    <div class="container" style="color: white;">
-        <div class="row">
-        <div class="col">
-            <br>
-            <h1 class="text-center">ReviewMusic</h1>
-            <p>
-            <br>
-            <div class ="text-center">Welcome back {{ session.user_name }}!</div>
-            <br>
-            <a class="text-center" href="/logout">Kirjaudu ulos</a>
-        </div>
-        </div>
+<div class="container d-flex justify-content-center" style="color:white;">
+    <p>Sign in: <a href="/login">Login</a></p>
+</div>
+<br>
+<div class="container d-flex justify-content-center" style="color:white;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
+        <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+        <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+        <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+        <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+    </svg>
+</div>
+{% else %}
+<div class="container d-flex justify-content-center" style="color: white;">
+    <div class="row">
+    <div class="col">
+        <br>
+        <h1 class="text-center">ReviewMusic</h1>
+        <p>
+        <br>
+        <div class ="text-center">Welcome back {{ session.user_name }}!</div>
+        <br>
+        <a class="center" href="/logout">Kirjaudu ulos</a>
     </div>
-    <div class="container d-flex justify-content-center" style="color:white;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-            <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-            <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-            <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-            <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-        </svg>
     </div>
-    {% endif %}
-</body>
+</div>
+<div class="container d-flex justify-content-center" style="color:white;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
+        <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+        <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+        <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+        <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+    </svg>
+</div>
+{% endif %}
 
-{% block content %}{% endblock %}
+{% endblock %}

@@ -1,7 +1,6 @@
 from app import app
 from flask import render_template, request, redirect
 import users
-from artistslist import names
 from db import db
 from sqlalchemy.sql import text
 
