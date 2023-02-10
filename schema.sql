@@ -5,7 +5,8 @@ CREATE TABLE users (
 );
 
 CREATE TABLE artists (
-
+    id SERIAL PRIMARY KEY,
+    name TEXT
 );
 
 CREATE TABLE songs (

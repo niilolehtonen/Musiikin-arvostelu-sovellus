@@ -1,22 +1,27 @@
 from app import app
 from flask import render_template, request, redirect
 import users
-
+from artistslist import names
+from db import db
+from sqlalchemy.sql import text
 
 @app.route("/")
 def index():
     return render_template("frontpage.html")
 
-@app.route("/login", methods = ["post"])
+@app.route("/login", methods = ["get","post"])
 def login():
-    
-    username = request.form["username"]
-    password = request.form["password"]
+    if request.method == "GET":
+        return render_template("login.html")
+    if request.method == "POST":
 
-    users.login(username,password)
-    #if not users.login(username, password):
-    #    return render_template("register_error.html", message="Wrong username or password")
-    return redirect("/")
+        username = request.form["username"]
+        password = request.form["password"]
+
+        #users.login(username,password)
+        if not users.login(username, password):
+            return render_template("error.html", message="Wrong username or password")
+        return redirect("/")
 
 @app.route("/logout")
 def logout():
@@ -40,6 +45,13 @@ def register():
         if not users.register(username, password1):
             return render_template("error.html", message="Registration unsuccesful")
         return redirect("/")
+
+@app.route("/artists", methods = ["get"])
+def artists():
+    #artist_names = names()
+    result = db.session.execute(text("""SELECT * FROM artists"""))
+    artist_info = result.fetchall()
+    return render_template("artists.html",artist_info=artist_info)
 
         
         
