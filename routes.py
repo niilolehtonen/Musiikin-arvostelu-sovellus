@@ -52,5 +52,10 @@ def artists():
     artist_info = result.fetchall()
     return render_template("artists.html",artist_info=artist_info)
 
-        
-        
+@app.route("/songs", methods = ["get"])
+def songs():
+    return render_template("songs.html")
+
+@app.route("/albums", methods = ["get"])
+def albums():
+    return render_template("albums.html")

@@ -25,6 +25,7 @@ CREATE TABLE reviews (
     song_name TEXT,
     rating INTEGER,
     comment TEXT,
-    user_id INTEGER REFERENCES users
+    user_id INTEGER REFERENCES users,
+    song_id INTEGER REFERENCES songs
 );
 
