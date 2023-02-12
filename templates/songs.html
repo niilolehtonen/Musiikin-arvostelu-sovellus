@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<table class="table" style="color: white;"">
+<table class="table" style="color: white;">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -15,6 +15,40 @@
     </tbody>
 </table>
 <br>
+
+{% if session.user_id %}
+
+
+<br>
+<div class="container" style="color:white;">
+  <h3>Add Review</h3>
+  <div class="row">
+  <div class="col">
+  <form method="post">
+      <p>
+      Song: <input type="text" name="song_name">
+      <p>
+      Album: <input type="text" name="album_name"> 
+      <p>
+      Artist: <input type="text" name="artist_name"> 
+      <p>
+      Year: <input type="text" name="year"> 
+      <p>
+      Rating (1-5 Stars): <input type="text" name="rating">
+      <p>
+      Comment: <input type0="text" name ="comment">
+      <p>  
+      <input type="submit" value="Add"> 
+      </p>
+      </div>
+      <br>
+  </form>
+  </div>
+  </div>
+</div>
+{% endif %}
+
+<br>
 <div class="container d-flex justify-content-center" style="color:white;">
     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
         <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
@@ -23,5 +57,4 @@
         <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
     </svg>
 </div>
-
 {% endblock %}
