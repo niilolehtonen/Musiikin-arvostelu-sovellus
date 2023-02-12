@@ -10,17 +10,21 @@ CREATE TABLE artists (
 );
 
 CREATE TABLE songs (
-
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    artist TEXT
 );
 
 CREATE TABLE albums (
-    
-);
-
-CREATE TABLE comments (
-
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    year INTEGER
 );
 
 CREATE TABLE reviews (
-
+    song_name TEXT,
+    rating INTEGER,
+    comment TEXT,
+    user_id INTEGER REFERENCES users
 );
+
