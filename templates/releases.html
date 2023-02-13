@@ -5,27 +5,28 @@
     <thead>
       <tr>
         <th scope="col">Song</th>
-        <th scope="col">Album</th>
         <th scope="col">Artist</th>
+        <th scope="col">Album</th>
         <th scope="col">Year</th>
         <th scope="col">Rating</th>
         <th scope="col">Reviews</th>
       </tr>
     </thead> 
     <tbody>
+      {% for i in release_info %}
       <tr>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td>{{i[3]}}</td>
+        <td>{{i[4]}}</td>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><a href="/review/{{i[1]}}">Reviews</a></td>
+      {% endfor %}
     </tbody>
 </table>
 <br>
 
 {% if session.user_id %}
-
 
 <br>
 <div class="container">

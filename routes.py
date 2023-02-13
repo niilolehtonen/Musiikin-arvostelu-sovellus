@@ -55,7 +55,9 @@ def artists():
 @app.route("/releases", methods = ["get","post"])
 def songs():
     if request.method == "GET":
-        return render_template("releases.html")
+        result = db.session.execute(text("""SELECT * FROM releases"""))
+        release_info = result.fetchall()
+        return render_template("releases.html",release_info=release_info)
     if request.method == "POST":
         song_name = request.form['song_name']
         album_name = request.form['album_name']
@@ -63,13 +65,13 @@ def songs():
         year = int(request.form['year'])
         user_id = users.user_id()
 
-    db.session.execute(text("""INSERT INTO releases (name, artist)
+    db.session.execute(text("""INSERT INTO releases (song, artist, album, year)
                  VALUES (:song_name, :artist_name, :album_name, :year)"""),
                  params={"song_name": song_name, "artist_name": artist_name, "album_name": album_name, "year": year})
     db.session.commit()
     return redirect("/releases")
 
 
-@app.route("/review", methods = ["get"])
-def albums():
+@app.route("/review/<song_name>", methods = ["get","post"])
+def review(song_name):
     return render_template("review.html")
