@@ -52,35 +52,24 @@ def artists():
     artist_info = result.fetchall()
     return render_template("artists.html",artist_info=artist_info)
 
-@app.route("/songs", methods = ["get","post"])
+@app.route("/releases", methods = ["get","post"])
 def songs():
     if request.method == "GET":
-        return render_template("songs.html")
+        return render_template("releases.html")
     if request.method == "POST":
         song_name = request.form['song_name']
         album_name = request.form['album_name']
         artist_name = request.form['artist_name']
         year = int(request.form['year'])
-        rating = int(request.form['rating'])
-        comment = request.form['comment']
         user_id = users.user_id()
 
-    db.session.execute(text("""INSERT INTO songs (name, artist)
-                 VALUES (:song_name, :artist_name)"""),
-                 params={"song_name": song_name, "artist_name": artist_name})
-    db.session.execute(text("""INSERT INTO albums (name, year)
-                 VALUES (:album_name, :year)"""),
-                 params={"album_name": album_name, "year": year})
-    db.session.execute(text("""INSERT INTO artists (name)
-                VALUES (:artist_name)"""),
-                 params={"artist_name": artist_name})
-    db.session.execute(text("""INSERT INTO reviews (song_name, rating, comment, user_id)
-                VALUES (:song_name, :rating, :comment, :user_id)"""),
-                 params={"song_name": song_name, "rating": rating, "comment": comment, "user_id": user_id})
+    db.session.execute(text("""INSERT INTO releases (name, artist)
+                 VALUES (:song_name, :artist_name, :album_name, :year)"""),
+                 params={"song_name": song_name, "artist_name": artist_name, "album_name": album_name, "year": year})
     db.session.commit()
-    return redirect("/songs")
+    return redirect("/releases")
 
 
-@app.route("/albums", methods = ["get"])
+@app.route("/review", methods = ["get"])
 def albums():
-    return render_template("albums.html")
+    return render_template("review.html")

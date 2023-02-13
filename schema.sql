@@ -6,25 +6,24 @@ CREATE TABLE users (
 
 CREATE TABLE artists (
     id SERIAL PRIMARY KEY,
-    name TEXT
+    name TEXT,
+    release_id INTEGER REFERENCES releases ON DELETE CASCADE
 );
 
-CREATE TABLE songs (
+CREATE TABLE releases (
     id SERIAL PRIMARY KEY,
-    name TEXT,
-    artist TEXT
+    song TEXT,
+    artist TEXT,
+    album TEXT,
+    year INTEGER,
+    reviews INTEGER REFERENCES reviews ON DELETE CASCADE
 );
 
-CREATE TABLE albums (
-    id SERIAL PRIMARY KEY,
-    name TEXT,
-    year INTEGER
-);
 
 CREATE TABLE reviews (
-    song_name TEXT,
+    id SERIAL PRIMARY KEY,
     rating INTEGER,
     comment TEXT,
-    user_id INTEGER REFERENCES users
+    user_id INTEGER REFERENCES users ON DELETE CASCADE
 );
 
