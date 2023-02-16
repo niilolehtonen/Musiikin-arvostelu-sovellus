@@ -4,17 +4,20 @@
 <table class="table" style="color: white;">
     <thead>
       <tr>
-        <th scope="col">Release</th>
         <th scope="col">Rating</th>
         <th scope="col">Comment</th>
         <th scope="col">User</th>
       </tr>
     </thead>
+    <h1 class="text-center" style="color: white;">Reviews for {{song_name}}</h1>
+    <br>
     <tbody>
+      {% for i in reviews %}
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{i[2]}}</td>
+        <td>{{i[3]}}</td>
+        <td>{{i[4]}}</td>
+      {% endfor %}
     </tbody>
 </table>
 {% if session.user_id %}

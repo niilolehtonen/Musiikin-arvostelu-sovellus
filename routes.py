@@ -65,13 +65,23 @@ def songs():
         year = int(request.form['year'])
         user_id = users.user_id()
 
-    db.session.execute(text("""INSERT INTO releases (song, artist, album, year)
+        db.session.execute(text("""INSERT INTO releases (song, artist, album, year)
                  VALUES (:song_name, :artist_name, :album_name, :year)"""),
                  params={"song_name": song_name, "artist_name": artist_name, "album_name": album_name, "year": year})
-    db.session.commit()
-    return redirect("/releases")
+        db.session.commit()
+        return redirect("/releases")
 
 
 @app.route("/review/<song_name>", methods = ["get","post"])
 def review(song_name):
-    return render_template("review.html")
+    if request.method == "GET":
+        result = db.session.execute(text("""SELECT * FROM reviews WHERE :song_name = song_name"""), params={"song_name": song_name})
+        reviews = result.fetchall()
+        return render_template("review.html",reviews=reviews, song_name=song_name)
+    if request.method == "POST":
+        rating = request.form['rating']
+        comment = request.form['comment']
+        user_id = users.user_id()
+        db.session.execute(text("""INSERT INTO reviews (song_name, rating, comment, user_id) VALUES (:song_name, :rating, :comment, :user_id)"""),params={"song_name": song_name, "rating": rating, "comment": comment, "user_id": user_id})
+        db.session.commit()
+        return redirect(f"/review/{song_name}")
