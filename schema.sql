@@ -4,11 +4,15 @@ CREATE TABLE users (
     password TEXT
 );
 
-CREATE TABLE artists (
+CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
-    name TEXT,
-    release_id INTEGER REFERENCES releases ON DELETE CASCADE 
+    song_name TEXT,
+    rating INTEGER,
+    comment TEXT,
+    user_id INTEGER REFERENCES users ON DELETE CASCADE
 );
+
+
 
 CREATE TABLE releases (
     id SERIAL PRIMARY KEY,
@@ -19,12 +23,8 @@ CREATE TABLE releases (
     reviews INTEGER REFERENCES reviews ON DELETE CASCADE
 );
 
-
-CREATE TABLE reviews (
+CREATE TABLE artists (
     id SERIAL PRIMARY KEY,
-    song_name TEXT,
-    rating INTEGER,
-    comment TEXT,
-    user_id INTEGER REFERENCES users ON DELETE CASCADE
+    name TEXT,
+    release_id INTEGER REFERENCES releases ON DELETE CASCADE 
 );
-

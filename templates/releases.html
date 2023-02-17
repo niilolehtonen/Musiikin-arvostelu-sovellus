@@ -15,12 +15,16 @@
     <tbody>
       {% for i in release_info %}
       <tr>
+        <td>{{i[0]}}</td>
         <td>{{i[1]}}</td>
         <td>{{i[2]}}</td>
         <td>{{i[3]}}</td>
-        <td>{{i[4]}}</td>
-        <td></td>
-        <td><a href="/review/{{i[1]}}">Reviews</a></td>
+        {% if i[4] != None %}
+        <td>{{ '%0.2f' % i[4] }}</td>
+        {% else %}
+        <td>{{ '-' }}</td>
+        {% endif %}
+        <td><a href="/review/{{i[0]}}">Reviews</a></td>
       {% endfor %}
     </tbody>
 </table>

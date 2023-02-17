@@ -13,11 +13,8 @@ def login():
     if request.method == "GET":
         return render_template("login.html")
     if request.method == "POST":
-
         username = request.form["username"]
         password = request.form["password"]
-
-        #users.login(username,password)
         if not users.login(username, password):
             return render_template("error.html", message="Wrong username or password")
         return redirect("/")
@@ -47,7 +44,6 @@ def register():
 
 @app.route("/artists", methods = ["get"])
 def artists():
-    #artist_names = names()
     result = db.session.execute(text("""SELECT * FROM artists"""))
     artist_info = result.fetchall()
     return render_template("artists.html",artist_info=artist_info)
@@ -55,7 +51,12 @@ def artists():
 @app.route("/releases", methods = ["get","post"])
 def songs():
     if request.method == "GET":
-        result = db.session.execute(text("""SELECT * FROM releases"""))
+        result = db.session.execute(text("""
+            SELECT r.song, r.artist, r.album, r.year, AVG(v.rating) as average_rating
+            FROM releases r
+            LEFT JOIN reviews v ON r.song = v.song_name
+            GROUP BY r.song, r.artist, r.album, r.year
+            """))
         release_info = result.fetchall()
         return render_template("releases.html",release_info=release_info)
     if request.method == "POST":
@@ -63,8 +64,7 @@ def songs():
         album_name = request.form['album_name']
         artist_name = request.form['artist_name']
         year = int(request.form['year'])
-        user_id = users.user_id()
-
+        print(song_name)
         db.session.execute(text("""INSERT INTO releases (song, artist, album, year)
                  VALUES (:song_name, :artist_name, :album_name, :year)"""),
                  params={"song_name": song_name, "artist_name": artist_name, "album_name": album_name, "year": year})
@@ -77,6 +77,7 @@ def review(song_name):
     if request.method == "GET":
         result = db.session.execute(text("""SELECT * FROM reviews WHERE :song_name = song_name"""), params={"song_name": song_name})
         reviews = result.fetchall()
+        print(song_name)
         return render_template("review.html",reviews=reviews, song_name=song_name)
     if request.method == "POST":
         rating = request.form['rating']
