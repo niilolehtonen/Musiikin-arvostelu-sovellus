@@ -59,7 +59,7 @@ psql < schema.sql
 - Luo .env tiedosto ja määrittele database_url osoite sekä luo henkilökohtainen salainen avain:
 
 ```bash
-DATABASE_URL=postgresql+psycopg2://
+DATABASE_URL=postgresql://
 SECRET_KEY=yoursecretkeyhere
 ```
 
