@@ -1,6 +1,8 @@
 # Musiikin-arvostelu-sovellus(Tietokantasovellus-Harjoitustyö)
 
-Sovellus mahdollistaa musiikin arvostelun internet-selaimessa. Jokainen käyttäjä on peruskäyttäjä tai ylläpitäjä.
+Linkki sovellukseen: https://tsoha-reviewmusic.fly.dev/
+
+Sovellus mahdollistaa musiikin arvostelun internet-selaimessa.
 
 ## Sovelluksen vaatimusmäärittely:
 * Käyttäjä voi luoda uuden tunnuksen sekä kirjautua sisään ja ulos.
@@ -31,6 +33,7 @@ Sovellus mahdollistaa musiikin arvostelun internet-selaimessa. Jokainen käyttä
   - Käyttöliittymä luotu toimivammaksi 'layout.html'-tiedostolla, jota laajennetaan Jinja-kirjaston avulla.
   - Toteutettu 'releases' sivulle lista julkaisuista jotka haetaan tietokannasta, sekä 'add release' toiminnallisuus. Toteutettu dynaamiset 'reviews' välilehdet, joihin lista arvosteluista sekä 'add review' toiminnalisuus.
   - SQL-skeemaa muutettu rakenteeseen 'users, artists, releases, reviews'
+  - Sovellus tuotannossa fly.io:n serverillä
 
 * Paranneltavaa:
   - 'Artists' välilehden tulee näyttää lukumäärä artistin julkaisuista sekä kaikkien julkaisujen keskiarvo. (Tällä hetkellä sivu näyttää ainoastaan tyhjän listan)
@@ -40,7 +43,7 @@ Sovellus mahdollistaa musiikin arvostelun internet-selaimessa. Jokainen käyttä
  
 * __Yhteenveto: Sovellus on hyvässä vaiheessa, mutta vaatii vielä hienosäätöä.__
 
-## Sovelluksen käynnistysohjeet:
+## Sovelluksen käynnistysohjeet lokaalisti:
 
 - Lataa sovelluksen lähdekoodi GitHubista, asenna PostgreSQL sekä luo virtuaaliympäristö:
 
