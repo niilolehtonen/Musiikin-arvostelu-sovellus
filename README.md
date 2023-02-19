@@ -37,6 +37,7 @@ Linkki sovellukseen: https://tsoha-reviewmusic.fly.dev/
 
 * Paranneltavaa:
   - 'Artists' välilehden tulee näyttää lukumäärä artistin julkaisuista sekä kaikkien julkaisujen keskiarvo. (Tällä hetkellä sivu näyttää ainoastaan tyhjän listan)
+  - 'Reviews' sivun listassa user id:n sijasta tulisi näyttää käyttäjänimi.
   - Toiminnalisuuden varmistaminen ja virheiden minimointi
   - Tietoturvan parantaminen (CSRF-token yms.)
   - Jos aikaa jää tarpeeksi, luodaan hakutoiminto 'releases' sivulle sekä admin käyttäjätyyppi, jonka on mahdollista poistaa julkasuja tai arvosteluja.
