@@ -1,8 +1,8 @@
 # Musiikin-arvostelu-sovellus(Tietokantasovellus-Harjoitustyö)
 
-Linkki sovellukseen: https://tsoha-reviewmusic.fly.dev/
-
 Sovellus mahdollistaa musiikin arvostelun internet-selaimessa.
+
+Linkki sovellukseen: https://tsoha-reviewmusic.fly.dev/
 
 ## Sovelluksen vaatimusmäärittely:
 * Käyttäjä voi luoda uuden tunnuksen sekä kirjautua sisään ja ulos.
