@@ -4,14 +4,16 @@
 <table class="table" style="color: white;">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Artist</th>
+        <th scope="col">Rating for all releases</th>
       </tr>
     </thead>
     <tbody>
+      {% for i in artist_info %}
       <tr>
-        <th scope="row">1</th>
-        <td>null</td>
+        <td>{{i[0]}}</td>
+        <td>{{ '%0.2f' % i[1] }}</td>
+      {% endfor %}
     </tbody>
 </table>
 {% endblock %}

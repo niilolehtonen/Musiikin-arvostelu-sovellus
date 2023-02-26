@@ -44,12 +44,23 @@ def register():
 
 @app.route("/artists", methods = ["get"])
 def artists():
-    result = db.session.execute(text("""SELECT * FROM artists"""))
-    artist_info = result.fetchall()
-    return render_template("artists.html",artist_info=artist_info)
+    if request.method == "GET":
+        result = db.session.execute(text("""
+                SELECT a.name as artist_name, AVG(v.rating) as average_rating
+                FROM artists a
+                JOIN artist_releases ar ON a.id = ar.artist_id
+                JOIN releases r ON ar.release_id = r.id
+                JOIN (
+                    SELECT song_name, rating
+                    FROM reviews
+                ) v ON r.song = v.song_name
+                GROUP BY a.name;
+        """))
+        artist_info = result.fetchall()
+        return render_template("artists.html", artist_info=artist_info)
 
-@app.route("/releases", methods = ["get","post"])
-def songs():
+@app.route("/releases", methods=["GET", "POST"])
+def releases():
     if request.method == "GET":
         result = db.session.execute(text("""
             SELECT r.song, r.artist, r.album, r.year, AVG(v.rating) as average_rating
@@ -58,17 +69,41 @@ def songs():
             GROUP BY r.song, r.artist, r.album, r.year
             """))
         release_info = result.fetchall()
-        return render_template("releases.html",release_info=release_info)
+        return render_template("releases.html", release_info=release_info)
     if request.method == "POST":
-        song_name = request.form['song_name']
-        album_name = request.form['album_name']
-        artist_name = request.form['artist_name']
-        year = int(request.form['year'])
-        print(song_name)
-        db.session.execute(text("""INSERT INTO releases (song, artist, album, year)
-                 VALUES (:song_name, :artist_name, :album_name, :year)"""),
-                 params={"song_name": song_name, "artist_name": artist_name, "album_name": album_name, "year": year})
+        song_name = request.form["song_name"]
+        album_name = request.form["album_name"]
+        artist_name = request.form["artist_name"]
+        year = int(request.form["year"])
+        db.session.execute(text("""
+            INSERT INTO releases (song, artist, album, year)
+            VALUES (:song_name, :artist_name, :album_name, :year)
+            """), {"song_name": song_name, "artist_name": artist_name, "album_name": album_name, "year": year})
+        
+        artist_result = db.session.execute(text("""
+            SELECT id FROM artists WHERE name = :artist_name
+            """), {"artist_name": artist_name})
+        
+        artist_row = artist_result.fetchone()
+        if artist_row is None:
+            db.session.execute(text("""
+                INSERT INTO artists (name) VALUES (:artist_name)
+                """), {"artist_name": artist_name})
+            artist_id = db.session.execute(text("""
+                SELECT id FROM artists WHERE name = :artist_name
+                """), {"artist_name": artist_name}).fetchone()[0]
+        else:
+            artist_id = artist_row[0]
+        release_id = db.session.execute(text("""
+            SELECT id FROM releases WHERE song = :song_name AND artist = :artist_name AND album = :album_name
+            """), {"song_name": song_name, "artist_name": artist_name, "album_name": album_name}).fetchone()[0]
+
+        db.session.execute(text("""
+            INSERT INTO artist_releases (artist_id, release_id) VALUES (:artist_id, :release_id)
+            """), {"artist_id": artist_id, "release_id": release_id})
+        
         db.session.commit()
+        
         return redirect("/releases")
 
 
