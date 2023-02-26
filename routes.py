@@ -71,6 +71,7 @@ def releases():
         release_info = result.fetchall()
         return render_template("releases.html", release_info=release_info)
     if request.method == "POST":
+        users.check_csrf()
         song_name = request.form["song_name"]
         if song_name == "":
             return render_template("error.html", message="Empty song name")
@@ -132,6 +133,7 @@ def review(song_name):
         print(song_name)
         return render_template("review.html",reviews=reviews, song_name=song_name)
     if request.method == "POST":
+        users.check_csrf()
         rating = request.form['rating']
         if not rating.isdigit() or int(rating) not in [1,2,3,4,5]:
             return render_template("error.html",message="Provide a rating (1, 2, 3, 4 or 5)")
