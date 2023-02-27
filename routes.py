@@ -128,9 +128,8 @@ def releases():
 @app.route("/review/<song_name>", methods = ["get","post"])
 def review(song_name):
     if request.method == "GET":
-        result = db.session.execute(text("""SELECT * FROM reviews WHERE :song_name = song_name"""), params={"song_name": song_name})
+        result = db.session.execute(text("""SELECT rating, comment, u.name FROM reviews JOIN users u ON user_id = u.id WHERE :song_name = song_name """), params={"song_name": song_name})
         reviews = result.fetchall()
-        print(song_name)
         return render_template("review.html",reviews=reviews, song_name=song_name)
     if request.method == "POST":
         users.check_csrf()
