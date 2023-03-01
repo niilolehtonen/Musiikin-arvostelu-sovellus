@@ -3,6 +3,7 @@ from flask import render_template, request, redirect
 import users
 from db import db
 from sqlalchemy.sql import text
+from regex_check import regex_check 
 
 @app.route("/")
 def index():
@@ -73,17 +74,17 @@ def releases():
     if request.method == "POST":
         users.check_csrf()
         song_name = request.form["song_name"]
-        if song_name == "":
+        if regex_check(song_name) == False:
             return render_template("error.html", message="Empty song name")
         if len(song_name) > 50:
             return render_template("error.html", message="Song name too long")
         album_name = request.form["album_name"]
-        if album_name == "":
+        if regex_check(album_name) == False:
             return render_template("error.html", message="Empty album name")
         if len(album_name) > 50:
             return render_template("error.html", message="Album name too long")
         artist_name = request.form["artist_name"]
-        if artist_name == "":
+        if regex_check(artist_name) == False:
             return render_template("error.html", message="Empty artist name")
         if len(artist_name) > 50:
             return render_template("error.html", message="Artist name too long")
@@ -137,7 +138,7 @@ def review(song_name):
         if not rating.isdigit() or int(rating) not in [1,2,3,4,5]:
             return render_template("error.html",message="Provide a rating (1, 2, 3, 4 or 5)")
         comment = request.form['comment']
-        if comment == "":
+        if regex_check(comment) == False:
             return render_template("error.html",message="Provide a comment")
         if len(comment) > 50:
             return render_template("error.html",message="Comment too long")
