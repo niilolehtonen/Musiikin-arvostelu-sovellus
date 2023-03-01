@@ -1,8 +1,10 @@
-# Music Review App (Database Project)
+# ReviewMusic
 
-The application allows users to review music on their internet browser.
+The application allows users to review music on their internet browser. This application has been developed for the 'Database Application Project' -course as part of my bachelor's degree in University of Helsinki.
 
 Link to the application: https://tsoha-reviewmusic.fly.dev/
+
+__First time connecting to the database while using the app, an internal server error might occur. If this is the case, just refresh the page and the application starts working.__
 
 ## Application requirements:
 * Users can create a new account, login, and logout.
@@ -17,7 +19,7 @@ Link to the application: https://tsoha-reviewmusic.fly.dev/
 * The application's user interface is in a good stage: Home page (including login), Registration page, Menu
 * The SQL schema has been defined
 * Login function has been implemented, although not fully functional yet
-* Unfortunately, I have not been able to connect to the database, so logging in does not work in practice. I don't know the reason, but I will participate in guidance tomorrow 6.2 and ask for advice on the matter. It may be due to using a MacBook instead of the recommended computer. (Postgres.app has been installed and seems to be working)
+* Unfortunately, I have not been able to connect to the database, so logging in does not work in practice. It may be due to using a MacBook instead of the recommended computer. (Postgres.app has been installed and seems to be working)
 * My first commit to GitHub was far too large, I committed several days of coding work at once. In the future, I will try to make commits as often as possible.
 
 ## Intermediate report 3 (Notes):
