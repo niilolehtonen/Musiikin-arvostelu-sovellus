@@ -1,6 +1,6 @@
 # ReviewMusic
 
-The application allows users to review music on their internet browser. This application has been developed for the 'Database Application Project' -course as part of my bachelor's degree in University of Helsinki.
+This application allows users to review music on their internet browser. The application has been developed for the 'Database Application Project' -course as a part of my bachelor's degree in University of Helsinki.
 
 Link to the application: https://tsoha-reviewmusic.fly.dev/
 
