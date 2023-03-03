@@ -15,14 +15,14 @@ __First time connecting to the database while using the app, an internal server 
 * Users can create a new work to be reviewed and rate it (stars and comments) if no reviews have been created for it yet. Alternatively, users can also add a new review for an existing work.
 * Administrators can add and remove works or individual reviews as needed.
 
-## Intermediate report 2 (Notes):
+## Report 2 ('Välipalautus'):
 * The application's user interface is in a good stage: Home page (including login), Registration page, Menu
 * The SQL schema has been defined
 * Login function has been implemented, although not fully functional yet
 * Unfortunately, I have not been able to connect to the database, so logging in does not work in practice. It may be due to using a MacBook instead of the recommended computer. (Postgres.app has been installed and seems to be working)
 * My first commit to GitHub was far too large, I committed several days of coding work at once. In the future, I will try to make commits as often as possible.
 
-## Intermediate report 3 (Notes):
+## Report 3 ('Välipalautus'):
 * The current functionality of the application:
   - Users can create a user account, log in and log out.
   - Users can add a release to the 'releases' page or view other releases.
