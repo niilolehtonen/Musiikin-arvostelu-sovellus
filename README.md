@@ -6,7 +6,7 @@ Link to the application: https://tsoha-reviewmusic.fly.dev/
 
 __First time connecting to the database while using the app, an internal server error might occur. If this is the case, just refresh the page and the application starts working.__
 
-## Application requirements:
+## Requirements specification:
 * Users can create a new account, login, and logout.
 * Users can view reviews of songs and albums created by other users. Users can also view a page for a single artist that shows all of their work's reviews.
 * The review page displays the average rating of all reviews, individual reviews, and information about the work (title, genre, release year).
