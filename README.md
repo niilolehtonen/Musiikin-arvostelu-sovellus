@@ -6,6 +6,14 @@ Link to the application: https://tsoha-reviewmusic.fly.dev/
 
 __First time connecting to the database while using the app, an internal server error might occur. If this is the case, just refresh the page and the application starts working.__
 
+<img src="https://github.com/niilolehtonen/ReviewMusic/blob/main/documents/images/Landing_page.png">
+
+<img src="https://github.com/niilolehtonen/ReviewMusic/blob/main/documents/images/Releases_page.png">
+
+<img src="https://github.com/niilolehtonen/ReviewMusic/blob/main/documents/images/Reviews_page.png">
+
+<img src="https://github.com/niilolehtonen/ReviewMusic/blob/main/documents/images/Artists_page.png">
+
 ## Features
 - A user can view the releases page artists page and reviews page.
 
